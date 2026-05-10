@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECC 完整使用教程 — 讲解幻灯片</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/night.css">
+<style>
+  :root { --r-heading-font: 'Microsoft YaHei', 'PingFang SC', sans-serif; --r-main-font: 'Microsoft YaHei', 'PingFang SC', sans-serif; }
+  .reveal { font-size: 32px; }
+  .reveal h1 { font-size: 2em; color: #e94560; }
+  .reveal h2 { font-size: 1.5em; color: #ff6b6b; }
+  .reveal h3 { font-size: 1.2em; color: #ffd93d; }
+  .reveal ul { list-style-type: none; }
+  .reveal ul li::before { content: " "; color: #e94560; font-weight: bold; }
+  .reveal pre { font-size: 0.6em; background: #1a1a2e; padding: 16px; border-radius: 8px; }
+  .reveal code { color: #e94560; background: #1a1a2e; padding: 2px 8px; border-radius: 4px; }
+  .reveal table { font-size: 0.7em; margin: auto; border-collapse: collapse; }
+  .reveal th { background: #e94560; color: white; padding: 8px 16px; }
+  .reveal td { padding: 6px 14px; border-bottom: 1px solid #333; }
+  .reveal tr:nth-child(even) td { background: #1a1a2e; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .stat-box { background: #1a1a2e; border: 2px solid #e94560; border-radius: 12px; padding: 24px; text-align: center; }
+  .stat-box .num { font-size: 2.5em; color: #e94560; font-weight: bold; }
+  .stat-box .label { font-size: 0.8em; color: #aaa; margin-top: 8px; }
+  .flow { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .flow-step { background: #1a1a2e; border: 1px solid #e94560; border-radius: 8px; padding: 12px 20px; font-size: 0.7em; }
+  .flow-arrow { color: #e94560; font-size: 1.5em; }
+  .tag { display: inline-block; background: #e94560; color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.7em; margin: 2px; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<!-- 出品方 -->
+<section>
+  <h2 style="color:#e94560">江苏超数信息科技有限公司</h2>
+  <h3 style="color:#fff;margin-top:10px">出品</h3>
+  <p style="margin-top:40px;font-size:1.2em;color:#ffd93d">数联万物，智耕天下</p>
+  <p style="font-size:0.7em;color:#aaa;margin-top:30px">智慧农业物联网与数字化解决方案提供商</p>
+  <p style="font-size:0.6em;color:#666;margin-top:20px">
+    <strong>核心产品：超数环境智能监控管理系统</strong><br>
+    物联网硬件 · 自动化控制 · 环境监测 · 远程智控 · 系统集成
+  </p>
+  <p style="font-size:0.55em;color:#888;margin-top:15px">
+    www.oksn.com  |  400-696-3698  |  ok@oksn.com
+  </p>
+</section>
+
+<!-- 封面 -->
+<section>
+  <h1>Everything-Claude-Code</h1>
+  <h2 style="color:#fff">(ECC) 完整使用教程</h2>
+  <p style="margin-top:40px;color:#888">版本 2.0.0-rc.1 | Full Profile</p>
+  <div class="stat-grid" style="margin-top:40px">
+    <div class="stat-box"><div class="num">89</div><div class="label">Rules</div></div>
+    <div class="stat-box"><div class="num">147</div><div class="label">Skills</div></div>
+    <div class="stat-box"><div class="num">48</div><div class="label">Agents</div></div>
+    <div class="stat-box"><div class="num">68</div><div class="label">Commands</div></div>
+  </div>
+  <p style="margin-top:30px;color:#666">2026年5月10日</p>
+</section>
+
+<!-- 概述 -->
+<section>
+  <h2>什么是 ECC？</h2>
+  <p style="font-size:0.9em">一套完整的 <strong style="color:#e94560">Claude Code 配置集合</strong></p>
+  <ul style="font-size:0.8em">
+    <li> 由 Anthropic 黑客松获奖者 Affaan Mustafa 开发</li>
+    <li> 经过 10+ 个月高强度日常使用打磨</li>
+    <li> 覆盖 14 种编程语言</li>
+    <li> 支持 7 个 AI 编程平台</li>
+  </ul>
+  <p style="margin-top:30px;font-size:0.8em;color:#e94560">Claude Code  →  AI 辅助开发平台</p>
+</section>
+
+<!-- 五大核心组件 -->
+<section>
+  <h2>五大核心组件</h2>
+  <table>
+    <tr><th>组件</th><th>数量</th><th>功能</th></tr>
+    <tr><td>Rules（规则）</td><td>89</td><td>定义编码标准和规范</td></tr>
+    <tr><td>Skills（技能）</td><td>147</td><td>封装专业领域工作流</td></tr>
+    <tr><td>Agents（智能体）</td><td>48</td><td>自主执行复杂任务</td></tr>
+    <tr><td>Commands（命令）</td><td>68</td><td>快捷操作入口</td></tr>
+    <tr><td>Hooks（钩子）</td><td>—</td><td>事件驱动的自动化</td></tr>
+  </table>
+</section>
+
+<!-- 规则系统 -->
+<section>
+  <h2>Rules：规则系统</h2>
+  <h3>三层架构</h3>
+  <ul style="font-size:0.8em">
+    <li> <strong>通用规则</strong> common/ — 10 个文件</li>
+    <li> <strong>语言规则</strong> &lt;lang&gt;/ — 14 种语言</li>
+    <li> <strong>中文规则</strong> zh/ — 中文翻译版</li>
+  </ul>
+  <h3 style="margin-top:20px">支持的语言</h3>
+  <p style="font-size:0.65em">
+    <span class="tag">C</span> <span class="tag">C++</span> <span class="tag">C#</span>
+    <span class="tag">Dart</span> <span class="tag">Go</span> <span class="tag">Java</span>
+    <span class="tag">Kotlin</span> <span class="tag">Perl</span> <span class="tag">PHP</span>
+    <span class="tag">Python</span> <span class="tag">Rust</span> <span class="tag">Swift</span>
+    <span class="tag">TypeScript</span> <span class="tag">Web</span>
+  </p>
+</section>
+
+<!-- 安装指南 -->
+<section>
+  <h2>安装 ECC</h2>
+  <h3>方式一：npm 安装</h3>
+  <pre><code>npm install -g ecc-universal
+npx ecc-install --profile full</code></pre>
+  <h3 style="margin-top:20px">方式二：Claude Code 插件</h3>
+  <pre><code>/plugin install everything-claude-code@everything-claude-code</code></pre>
+  <h3 style="margin-top:20px">Profile 选项</h3>
+  <p style="font-size:0.7em">
+    <span class="tag">full</span> <span class="tag">minimal</span>
+    <span class="tag">typescript</span> <span class="tag">python</span>
+    <span class="tag">java</span> <span class="tag">go</span>
+    <span class="tag">rust</span>
+  </p>
+</section>
+
+<!-- 核心技能 -->
+<section>
+  <h2>Skills：核心技能速查</h2>
+  <table>
+    <tr><th>技能</th><th>功能</th><th>场景</th></tr>
+    <tr><td>code-review</td><td>代码审查</td><td>代码修改后</td></tr>
+    <tr><td>build-fix</td><td>构建修复</td><td>编译失败时</td></tr>
+    <tr><td>test-coverage</td><td>覆盖率管理</td><td>确保测试质量</td></tr>
+    <tr><td>security-review</td><td>安全审查</td><td>用户输入/认证</td></tr>
+    <tr><td>plan</td><td>架构规划</td><td>新功能开发前</td></tr>
+    <tr><td>feature-dev</td><td>功能开发</td><td>端到端实现</td></tr>
+    <tr><td>refactor-clean</td><td>代码清理</td><td>维护阶段</td></tr>
+    <tr><td>review-pr</td><td>PR审查</td><td>提交前</td></tr>
+  </table>
+</section>
+
+<!-- 智能体 -->
+<section>
+  <h2>Agents：智能体矩阵</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:0.65em">
+    <div style="background:#1a1a2e;padding:16px;border-radius:8px">
+      <h3 style="color:#e94560">代码审查</h3>
+      typescript-reviewer · python-reviewer<br>
+      go-reviewer · rust-reviewer · java-reviewer<br>
+      cpp-reviewer · csharp-reviewer · kotlin-reviewer · flutter-reviewer
+    </div>
+    <div style="background:#1a1a2e;padding:16px;border-radius:8px">
+      <h3 style="color:#e94560">构建修复</h3>
+      build-error-resolver · go-build-resolver<br>
+      java-build-resolver · rust-build-resolver<br>
+      cpp-build-resolver · kotlin-build-resolver<br>
+      dart-build-resolver
+    </div>
+    <div style="background:#1a1a2e;padding:16px;border-radius:8px">
+      <h3 style="color:#e94560">安全质量</h3>
+      security-reviewer · silent-failure-hunter<br>
+      tdd-guide · type-design-analyzer<br>
+      pr-test-analyzer · comment-analyzer
+    </div>
+    <div style="background:#1a1a2e;padding:16px;border-radius:8px">
+      <h3 style="color:#e94560">专业领域</h3>
+      database-reviewer · performance-optimizer<br>
+      seo-specialist · a11y-architect<br>
+      opensource-forker/sanitizer/packager
+    </div>
+  </div>
+</section>
+
+<!-- 工作流 -->
+<section>
+  <h2>推荐工作流</h2>
+
+  <h3 style="margin-top:10px">新功能开发</h3>
+  <div class="flow">
+    <div class="flow-step">/plan</div><div class="flow-arrow">→</div>
+    <div class="flow-step">/feature-dev</div><div class="flow-arrow">→</div>
+    <div class="flow-step">/code-review</div><div class="flow-arrow">→</div>
+    <div class="flow-step">/test-coverage</div>
+  </div>
+
+  <h3 style="margin-top:30px">Bug 修复</h3>
+  <div class="flow">
+    <div class="flow-step">定位</div><div class="flow-arrow">→</div>
+    <div class="flow-step">/build-fix</div><div class="flow-arrow">→</div>
+    <div class="flow-step">/code-review</div><div class="flow-arrow">→</div>
+    <div class="flow-step">/test-coverage</div>
+  </div>
+
+  <h3 style="margin-top:30px">PR 流水线</h3>
+  <div class="flow">
+    <div class="flow-step">/prp-plan</div><div class="flow-arrow">→</div>
+    <div class="flow-step">/prp-implement</div><div class="flow-arrow">→</div>
+    <div class="flow-step">/prp-commit</div><div class="flow-arrow">→</div>
+    <div class="flow-step">/prp-pr</div>
+  </div>
+</section>
+
+<!-- 20 个模块 -->
+<section>
+  <h2>20 个安装模块</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:0.55em">
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">1. rules-core — 89条规则</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">2. agents-core — 48个智能体</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">3. commands-core — 68条命令</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">4. hooks-runtime — 钩子运行时</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">5. platform-configs — 多平台</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">6. framework-language — 语言框架</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">7. database — 数据库</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">8. workflow-quality — 工作流</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">9. security — 安全</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">10. research-apis — 研究API</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">11. business-content — 内容</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">12. operator-workflows — 运维</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">13. social-distribution — 社交</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">14. media-generation — 媒体</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">15. orchestration — 编排</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">16. swift-apple — Apple</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">17. agentic-patterns — AI</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">18. devops-infra — 基础设施</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">19. supply-chain — 供应链</div>
+    <div style="background:#1a1a2e;padding:8px;border-radius:4px">20. document-processing — 文档</div>
+  </div>
+</section>
+
+<!-- 总结 -->
+<section>
+  <h2>总结</h2>
+  <ul style="font-size:0.8em">
+    <li> <strong style="color:#e94560">全语言覆盖</strong> — 14种编程语言</li>
+    <li> <strong style="color:#e94560">全流程自动化</strong> — 需求→开发→审查→部署</li>
+    <li> <strong style="color:#e94560">开箱即用</strong> — 一条命令完成安装</li>
+    <li> <strong style="color:#e94560">持续进化</strong> — 社区活跃、持续更新</li>
+  </ul>
+  <p style="margin-top:30px;font-size:0.7em">
+    GitHub: <code>github.com/affaan-m/everything-claude-code</code><br>
+    npm: <code>npmjs.com/package/ecc-universal</code>
+  </p>
+  <p style="margin-top:20px;color:#e94560;font-size:1.2em">Thank You!</p>
+</section>
+
+<!-- 公司信息 -->
+<section>
+  <h2 style="color:#e94560">江苏超数信息科技有限公司</h2>
+  <h3 style="color:#fff">数联万物，智耕天下</h3>
+  <p style="font-size:0.65em;color:#aaa;margin-top:20px">智慧农业物联网与数字化解决方案提供商</p>
+  <p style="font-size:0.55em;color:#888;margin-top:15px">
+    <strong>宗旨：</strong>专业是基础、服务是保证、质量是信誉
+  </p>
+  <div style="margin-top:30px;font-size:0.65em;color:#ccc">
+    <p> 官网：<code>www.oksn.com</code></p>
+    <p> 邮箱：<code>ok@oksn.com</code></p>
+    <p> 电话：<code>400-696-3698</code></p>
+  </div>
+  <p style="margin-top:20px;font-size:0.5em;color:#666">
+    江苏省南通市跃龙南路182号数字大厦6楼
+  </p>
+</section>
+
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    width: 1200,
+    height: 720,
+    margin: 0.1,
+    center: true
+  });
+</script>
+</body>
+</html>
